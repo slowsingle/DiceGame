@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DemoTest : MonoBehaviour
 {
+    [SerializeField] private Vector3 spawnPointOffset;
+    [SerializeField] private Vector3 spawnPointRandomVal;
+    [SerializeField] private float forceVal;
 
     private GameObject spawnPoint = null;
 
@@ -17,30 +20,24 @@ public class DemoTest : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(Dice.MOUSE_LEFT_BUTTON))
         {
-            Debug.Log("GetMouseButtonDown");
-            UpdateRoll();
+            Dice.Clear();
+            StartCoroutine("UpdateRoll");
         }
     }
 
     private Vector3 Force()
     {
-        Vector3 rollTarget = Vector3.zero + new Vector3(2 + 6 * Random.value, .5F + 3 * Random.value, -2 - 3 * Random.value);
-        return Vector3.Lerp(spawnPoint.transform.position, rollTarget, 1).normalized * (-35 - Random.value * 20);
+        Vector3 rollTarget = spawnPointOffset + new Vector3(spawnPointRandomVal.x * Random.value, spawnPointRandomVal.y * Random.value, spawnPointRandomVal.z * Random.value);
+        return rollTarget.normalized * forceVal; //* (-35 - Random.value * 20);
     }
 
-    private void UpdateRoll()
+    IEnumerator UpdateRoll() 
     {
-        // left mouse button clicked so roll random colored dice 2 of each dieType
-        Dice.Clear();
-
-        Dice.Roll("1d10", "d10-" + randomColor, spawnPoint.transform.position, Force());
-        Dice.Roll("1d10", "d10-" + randomColor, spawnPoint.transform.position, Force());
-        Dice.Roll("1d10", "d10-" + randomColor, spawnPoint.transform.position, Force());
-        Dice.Roll("1d10", "d10-" + randomColor, spawnPoint.transform.position, Force());
-        Dice.Roll("1d6", "d6-" + randomColor, spawnPoint.transform.position, Force());
-        Dice.Roll("1d6", "d6-" + randomColor, spawnPoint.transform.position, Force());
-        Dice.Roll("1d6", "d6-" + randomColor, spawnPoint.transform.position, Force());
-        Dice.Roll("1d6", "d6-" + randomColor, spawnPoint.transform.position, Force());
+        for (int i = 0; i < 8; i++)
+        {
+            Dice.Roll("1d6", "d6-" + randomColor + "-dots", spawnPoint.transform.position, Force());
+            yield return new WaitForSeconds(.1f);
+        }
     }
 
 	string randomColor
