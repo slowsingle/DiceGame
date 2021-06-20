@@ -36,7 +36,7 @@ public class DemoTest : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             Dice.Roll("1d6", "d6-" + randomColor + "-dots", spawnPoint.transform.position, Force());
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.05f);
         }
     }
 

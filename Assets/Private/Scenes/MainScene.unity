@@ -730,13 +730,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8940bca90251d094b8ef20be27fe3e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playingCardPrefabList:
-  - {fileID: 8713357493971281527, guid: 1d1cc56097e553a46b1249f2c8bc83cf, type: 3}
-  - {fileID: 4728769083773931331, guid: 71e2ac9160ea26e4aa4ab8d9c87a8bf1, type: 3}
-  - {fileID: 2407788585431381547, guid: 0c9f83dbd793c6a48a7556f2d55f8bf4, type: 3}
-  - {fileID: 8607722703119711929, guid: f24ec402e5fe84f409dceac116ca2781, type: 3}
-  - {fileID: 14266837350846585, guid: d8ec169ce3d59824ebf20eacc9dd05ee, type: 3}
   basePoint: {fileID: 1472351705}
+  playingCardsTable:
+    club01: {fileID: 8713357493971281527, guid: 1d1cc56097e553a46b1249f2c8bc83cf,
+      type: 3}
+    club02: {fileID: 4728769083773931331, guid: 71e2ac9160ea26e4aa4ab8d9c87a8bf1,
+      type: 3}
+    club03: {fileID: 2407788585431381547, guid: 0c9f83dbd793c6a48a7556f2d55f8bf4,
+      type: 3}
+    club04: {fileID: 8607722703119711929, guid: f24ec402e5fe84f409dceac116ca2781,
+      type: 3}
+    club05: {fileID: 14266837350846585, guid: d8ec169ce3d59824ebf20eacc9dd05ee, type: 3}
 --- !u!1 &1183492409
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,8 +20,11 @@ public class Card : MonoBehaviour
     }
 
 
-    public void OnUserAction()
+    public bool OnUserAction()
     {
+        // カードをひっくり返す
         _transform.Rotate(new Vector3(0, 0, 1), 180);
+        bool isFrontSide = _transform.rotation.eulerAngles.z % 360 == 0;
+        return isFrontSide;
     }
 }

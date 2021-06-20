@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
@@ -24,7 +25,18 @@ public class SceneManager : MonoBehaviour
             {
                 if (hit.collider.gameObject.CompareTag(cardTag))
                 {
-                    hit.collider.gameObject.GetComponent<Card>().OnUserAction();
+                    bool isFrontSide = hit.collider.gameObject.GetComponent<Card>().OnUserAction();
+
+                    string objName = hit.collider.gameObject.name;
+                    string cardName = objName.Split('_')[2];
+
+                    Match markMatch = Regex.Match(cardName, @"[a-z]+", RegexOptions.IgnoreCase);
+                    string mark = markMatch.Value;
+
+                    Match numberMatch = Regex.Match(cardName, @"\d+");
+                    string number = numberMatch.Value; 
+
+                    Debug.Log("name is " + mark + " : " + number + ", isFrontSide is " + isFrontSide);
                 }
             }
         }   

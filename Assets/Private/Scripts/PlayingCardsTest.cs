@@ -2,21 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayingCardsTest : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> playingCardPrefabList;
     [SerializeField] private Transform basePoint;
+
+    [SerializeField] private PlayingCardsTable playingCardsTable;
 
     private List<GameObject> playingCardInstanceList = new List<GameObject>();
 
 
-    void Start()
+    private void Start()
     {
-        for (int i = 0; i < playingCardPrefabList.Count; i++)
+        playingCardsTable.Initialize();
+        playingCardsTable.Shuffle();
+
+        List<GameObject> cardDeck = playingCardsTable.getCardDeck();
+
+        for (int i = 0; i < cardDeck.Count; i++)
         {
-            float _offset = ((float) i - (float) playingCardPrefabList.Count / 2.0f) * 1.0f;
+            float _offset = ((float) i - (float) cardDeck.Count / 2.0f) * 1.0f;
             Vector3 _point = basePoint.position + new Vector3(_offset, 0f, 0f);
-            GameObject inst = (GameObject) GameObject.Instantiate(playingCardPrefabList[i], _point, Quaternion.identity);
+            GameObject inst = (GameObject) GameObject.Instantiate(cardDeck[i], _point, Quaternion.identity);
             inst.GetComponent<Transform>().localScale = new Vector3(0.1f, 0.1f, 0.1f);
             if (inst == null)
             {
@@ -27,7 +34,7 @@ public class PlayingCardsTest : MonoBehaviour
     }
 
 
-    void Update()
+    private void Update()
     {
         
     }
