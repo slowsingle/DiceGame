@@ -25,23 +25,23 @@ public class DiceController : MonoBehaviour
     {
         if (Dice2.Count("")>0)
         {
-            List<int> values = Dice2.GetValues();
-            string st = "";
-            foreach (int val in values)
-            {
-                st += " | " + val;
-            }
-            Debug.Log(st);
+            // List<int> values = Dice2.GetValues();
+            // string st = "";
+            // foreach (int val in values)
+            // {
+            //     st += " | " + val;
+            // }
+            // Debug.Log(st);
 
-            if (isRollingEnd)
-            {
-                int sum_val = 0;
-                foreach (int val in values)
-                {
-                    sum_val += val;
-                }
-                Debug.Log("sum is " + sum_val);
-            }
+            // if (isRollingEnd)
+            // {
+            //     int sum_val = 0;
+            //     foreach (int val in values)
+            //     {
+            //         sum_val += val;
+            //     }
+            //     Debug.Log("sum is " + sum_val);
+            // }
         }
     }
 
@@ -56,7 +56,7 @@ public class DiceController : MonoBehaviour
         isRollingEnd = false;
         Dice2.Clear();
         StartCoroutine("UpdateRoll", nCurrentDice);
-        StartCoroutine("WaitRollingDice", .05f * (nCurrentDice) + 3.0f);
+        StartCoroutine("WaitRollingDice", .05f * (nCurrentDice) + 3.5f);
     }
 
     private Vector3 Force()
