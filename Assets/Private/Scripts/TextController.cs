@@ -12,11 +12,20 @@ public class TextController : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < numLine; i++)
-        {
+        // for (int i = 0; i < numLine; i++)
+        // {
 
-            textMessage.Add("aaaaaa " + i);
+        //     textMessage.Add("aaaaaa " + i);
+        // }
+    }
+
+    public void AddMessage(string message)
+    {
+        if (textMessage.Count == numLine)
+        {
+            textMessage.RemoveAt(0);
         }
+        textMessage.Add(message);
     }
 
     private void Update()

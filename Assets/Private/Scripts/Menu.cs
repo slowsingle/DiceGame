@@ -7,6 +7,7 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private Button diceRollButton;
     [SerializeField] private DiceController diceController;
+    [SerializeField] private TextController textController;
 
     bool nowWaitingDiceRoll = false;
 
@@ -31,6 +32,8 @@ public class Menu : MonoBehaviour
             st += " => " + sum_val;
             Debug.Log(st);
             nowWaitingDiceRoll = false;
+
+            textController.AddMessage(st);
         }
 
     }
