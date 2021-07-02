@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DiceController : MonoBehaviour
 {
@@ -23,26 +24,9 @@ public class DiceController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Dice2.Count("")>0)
-        {
-            // List<int> values = Dice2.GetValues();
-            // string st = "";
-            // foreach (int val in values)
-            // {
-            //     st += " | " + val;
-            // }
-            // Debug.Log(st);
-
-            // if (isRollingEnd)
-            // {
-            //     int sum_val = 0;
-            //     foreach (int val in values)
-            //     {
-            //         sum_val += val;
-            //     }
-            //     Debug.Log("sum is " + sum_val);
-            // }
-        }
+        // if (Dice2.Count("")>0)
+        // {
+        // }
     }
 
     public List<int> GetValues()
