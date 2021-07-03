@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayingCardsTest : MonoBehaviour
+public class PlayingCardsController : MonoBehaviour
 {
     [SerializeField] private Transform basePoint;
 

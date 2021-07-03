@@ -1758,7 +1758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1046832106}
   - component: {fileID: 1046832110}
-  - component: {fileID: 1046832109}
+  - component: {fileID: 1046832108}
   - component: {fileID: 1046832107}
   m_Layer: 0
   m_Name: app
@@ -1798,7 +1798,7 @@ MonoBehaviour:
   spawnPointRandomVal: {x: 0, y: 0, z: 0}
   forceVal: 15
   isRollingEnd: 0
---- !u!114 &1046832109
+--- !u!114 &1046832108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1807,7 +1807,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1046832105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8940bca90251d094b8ef20be27fe3e91, type: 3}
+  m_Script: {fileID: 11500000, guid: ce74e57cbec451041a2bd44b2054a566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   basePoint: {fileID: 1472351705}
