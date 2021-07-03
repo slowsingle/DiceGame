@@ -1836,6 +1836,32 @@ MonoBehaviour:
       type: 3}
     club13: {fileID: 8387379401857513986, guid: 758e7572125d74344aef6bbc00783a58,
       type: 3}
+    diamond01: {fileID: 7798726810910966806, guid: f6b699ff21559bc4282d7cf0ff522634,
+      type: 3}
+    diamond02: {fileID: 740152203769002627, guid: fb504e82be2699044917d3c360ba3229,
+      type: 3}
+    diamond03: {fileID: 877798333468748233, guid: ffe8af5b3c9db6148ae35786adc66d86,
+      type: 3}
+    diamond04: {fileID: 8161463967123878006, guid: ab57051fe93c8e7438bcfdacb49452a9,
+      type: 3}
+    diamond05: {fileID: 4705094881709916490, guid: be89d8923af43af4e832cad1de782dbd,
+      type: 3}
+    diamond06: {fileID: 5171526685483169077, guid: f2e20d53ab88dcd4fa5a71d8a73c6573,
+      type: 3}
+    diamond07: {fileID: 3948913753458471593, guid: a4ff2953159bfc04bbf910e3e0cb782d,
+      type: 3}
+    diamond08: {fileID: 7053000059559068000, guid: 86850f5aac494fb47b3901083248e109,
+      type: 3}
+    diamond09: {fileID: 4244010846955971451, guid: 23de0e6d7c9599b41adff62ca13f9c69,
+      type: 3}
+    diamond10: {fileID: 2859525627050369763, guid: 5af0cda9ec825d343a55947605f315da,
+      type: 3}
+    diamond11: {fileID: 1296520148085422313, guid: 0a28b8910d2c21b41ad2a932a5b3e0e4,
+      type: 3}
+    diamond12: {fileID: 7349598165893746992, guid: 527be08438e77c647b3bff00ce5cc256,
+      type: 3}
+    diamond13: {fileID: 1854059080673174812, guid: 0dc512b3b50dc7a4389e5af9e778e85d,
+      type: 3}
 --- !u!114 &1046832110
 MonoBehaviour:
   m_ObjectHideFlags: 0

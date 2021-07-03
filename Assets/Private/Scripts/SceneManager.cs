@@ -23,6 +23,8 @@ public class SceneManager : MonoBehaviour
             //Rayの原点と方向から、飛ばす方向を定めてオブジェクトの衝突判定を行う
             if (Physics.Raycast(ray.origin, ray.direction, out hit, Mathf.Infinity))
             {
+                //Debug.Log(hit.collider.gameObject.tag);
+                //Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.CompareTag(cardTag))
                 {
                     bool isFrontSide = hit.collider.gameObject.GetComponent<Card>().OnUserAction();
