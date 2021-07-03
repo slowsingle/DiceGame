@@ -23,19 +23,19 @@ public class Menu : MonoBehaviour
         {
             List<int> values = diceController.GetValues();
             
-            string st = "each number of dice is";
+            string st = "サイコロの出目は";
             int sum_val = 0;
             foreach (int val in values)
             {
                 st += " " + ((val == 0) ? "?" : val.ToString());
                 sum_val += val;
             }
-            st += " => " + sum_val;
-            //Debug.Log(st);
-            nowWaitingDiceRoll = false;
-            diceRollButton.interactable = true;
-
+            st += " で、合計は " + sum_val +"です";
             textController.AddMessage(st);
+            textController.AddMessage("合計値がちょうどぴったりになるようにカードを好きなだけめくってください");
+
+            nowWaitingDiceRoll = false;
+            diceRollButton.interactable = true;            
         }
 
     }
