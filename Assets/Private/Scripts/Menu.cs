@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private Button diceRollButton;
     [SerializeField] private DiceController diceController;
     [SerializeField] private TextController textController;
+    [SerializeField] private ToggleSelector toggleSelector;
 
     bool nowWaitingDiceRoll = false;
 
@@ -30,8 +31,9 @@ public class Menu : MonoBehaviour
                 sum_val += val;
             }
             st += " => " + sum_val;
-            Debug.Log(st);
+            //Debug.Log(st);
             nowWaitingDiceRoll = false;
+            diceRollButton.interactable = true;
 
             textController.AddMessage(st);
         }
@@ -40,7 +42,15 @@ public class Menu : MonoBehaviour
 
     private void RunDiceRoll()
     {
-        diceController.DiceRoll(6);
+        int nDice = toggleSelector.getSelectNumDice();
+        if (nDice == 0)
+        {
+            textController.AddMessage("振るサイコロの数を決めてください");
+            return;
+        }
+
+        diceRollButton.interactable = false;
+        diceController.DiceRoll(nDice);
         nowWaitingDiceRoll = true;
     }
 }

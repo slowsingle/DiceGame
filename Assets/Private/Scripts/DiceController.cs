@@ -15,7 +15,6 @@ public class DiceController : MonoBehaviour
     // ダイスが完全に振り終わったか？
     public bool isRollingEnd = false;
 
-
     private void Start()
     {
         spawnPoint = GameObject.Find("spawnPoint");

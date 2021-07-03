@@ -349,7 +349,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -615,8 +615,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -162.8, y: -184.79}
-  m_SizeDelta: {x: 55.948715, y: 32.152084}
+  m_AnchoredPosition: {x: -167.61, y: -184.79}
+  m_SizeDelta: {x: 46.32585, y: 32.152084}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &451014919
 MonoBehaviour:
@@ -789,8 +789,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -344.6, y: -186}
-  m_SizeDelta: {x: 43.739273, y: 34.575806}
+  m_AnchoredPosition: {x: -343.18, y: -186}
+  m_SizeDelta: {x: 46.569534, y: 34.575806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &578529933
 MonoBehaviour:
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -1821,6 +1821,21 @@ MonoBehaviour:
     club04: {fileID: 8607722703119711929, guid: f24ec402e5fe84f409dceac116ca2781,
       type: 3}
     club05: {fileID: 14266837350846585, guid: d8ec169ce3d59824ebf20eacc9dd05ee, type: 3}
+    club06: {fileID: 5157621696908248286, guid: 57c32fca1cf574847a9e8df604000fc9,
+      type: 3}
+    club07: {fileID: 4326086016779330002, guid: cf7f08e4d0bd5014b87ca0924b0f998f,
+      type: 3}
+    club08: {fileID: 1535433599517909325, guid: 859a69a2afa120b43850c9cd106f4bf1,
+      type: 3}
+    club09: {fileID: 4272227442516388497, guid: 20da808ab2a24cf4393462bd72022ec5,
+      type: 3}
+    club10: {fileID: 2194625916379401999, guid: 4f1ac5d9bb0145e478692d54589f8967,
+      type: 3}
+    club11: {fileID: 797663579735092538, guid: 60378eeda91387f4384f20f946f6bc50, type: 3}
+    club12: {fileID: 4974323665272148467, guid: d88027f6a04646c4383a9b136a96eda4,
+      type: 3}
+    club13: {fileID: 8387379401857513986, guid: 758e7572125d74344aef6bbc00783a58,
+      type: 3}
 --- !u!114 &1046832110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,7 +2093,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1242615267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f1f10e7868211489b4bdefbf36cda8, type: 3}
+  m_Script: {fileID: 11500000, guid: 57744577a0ea69c41b4b2f492948dcab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   toggles:
@@ -2205,6 +2220,7 @@ MonoBehaviour:
   diceRollButton: {fileID: 1771656329}
   diceController: {fileID: 1046832107}
   textController: {fileID: 1828619492}
+  toggleSelector: {fileID: 1242615270}
 --- !u!1 &1264457506
 GameObject:
   m_ObjectHideFlags: 0
@@ -2411,8 +2427,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -283.73, y: -186}
-  m_SizeDelta: {x: 45.492935, y: 34.575806}
+  m_AnchoredPosition: {x: -283.45, y: -186}
+  m_SizeDelta: {x: 46.059006, y: 34.575806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1369890369
 MonoBehaviour:
@@ -2751,7 +2767,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -2829,7 +2845,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -2907,9 +2923,9 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0

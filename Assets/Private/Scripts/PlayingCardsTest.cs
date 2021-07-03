@@ -11,6 +11,8 @@ public class PlayingCardsTest : MonoBehaviour
 
     private List<GameObject> playingCardInstanceList = new List<GameObject>();
 
+    //private int row = 4, col = 5;  // 行と列
+
 
     private void Start()
     {
