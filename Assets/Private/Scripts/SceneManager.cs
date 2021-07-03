@@ -1,17 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
+    [SerializeField] private TextController textController;
+
     public string cardTag = "PlayingCard";
 
-    void Start()
+    // めくったカードを記録しておく
+    private List<GameObject> turnedOverCardList = new List<GameObject>();
+    private int sum_number = 0;
+
+    private State state;  // ゲームの状態を取得できるようにする
+
+    private void Start()
     {
-        
+        state = GameObject.Find("State").GetComponent<State>();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -23,24 +33,35 @@ public class SceneManager : MonoBehaviour
             //Rayの原点と方向から、飛ばす方向を定めてオブジェクトの衝突判定を行う
             if (Physics.Raycast(ray.origin, ray.direction, out hit, Mathf.Infinity))
             {
-                //Debug.Log(hit.collider.gameObject.tag);
-                //Debug.Log(hit.collider.gameObject.name);
-                if (hit.collider.gameObject.CompareTag(cardTag))
+                GameObject obj = hit.collider.gameObject;
+                //Debug.Log(obj.tag + ", " + obj.name);
+                if (obj.CompareTag(cardTag))
                 {
-                    bool isFrontSide = hit.collider.gameObject.GetComponent<Card>().OnUserAction();
+                    bool isFrontSide = obj.GetComponent<Card>().OnUserAction();
 
-                    string objName = hit.collider.gameObject.name;
+                    string objName = obj.name;
                     string cardName = objName.Split('_')[2];
 
                     Match markMatch = Regex.Match(cardName, @"[a-z]+", RegexOptions.IgnoreCase);
                     string mark = markMatch.Value;
 
                     Match numberMatch = Regex.Match(cardName, @"\d+");
-                    string number = numberMatch.Value; 
+                    int number = Int32.Parse(numberMatch.Value); 
 
-                    Debug.Log("name is " + mark + " : " + number + ", isFrontSide is " + isFrontSide);
+                    sum_number += number;
+                    textController.AddMessage("めくったカードのマークは " + mark + " で数字は " + number + " です（合計値は" + sum_number + "）");
+
+                    turnedOverCardList.Add(obj);
+                    
+                    //Debug.Log("name is " + mark + " : " + number + ", isFrontSide is " + isFrontSide);
+                    state.ChangeState(State.StateID.TurnOverCards);
                 }
             }
         }   
+    }
+
+    public int getSumTurnedOverCardNumber()
+    {
+        return sum_number;
     }
 }

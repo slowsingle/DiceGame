@@ -17,7 +17,7 @@ public class DiceController : MonoBehaviour
 
     private void Start()
     {
-        spawnPoint = GameObject.Find("spawnPoint");
+        spawnPoint = GameObject.Find("SpawnPoint");
     }
 
     // Update is called once per frame
