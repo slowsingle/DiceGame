@@ -83,6 +83,12 @@ public class SceneManager : MonoBehaviour
         return sumTotalNumTurnedOver;
     }
 
+    // 場に残されているカードの枚数を返す
+    public int GetNumLeftPlayingCards()
+    {
+        return playingCardsController.GetNumLeftPlayingCards();
+    }
+
 
     // めくったカードを元に戻す
     public void ResetPlayingCards()

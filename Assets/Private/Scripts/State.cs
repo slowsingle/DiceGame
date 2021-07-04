@@ -9,6 +9,7 @@ public class State : MonoBehaviour
     {
         DiceRoll,
         TurnOverCards,
+        GameOver
     }
 
     // ステート本体

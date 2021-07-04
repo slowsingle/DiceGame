@@ -13,6 +13,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private SceneManager sceneManager;
     [SerializeField] private Text sumTotalTurnedOverCardsText;
     [SerializeField] private AudioSource diceRollSound, OKSound;
+    [SerializeField] private Canvas GameOverCanvas; 
 
     private bool nowWaitingDiceRoll = false;
     private int currentSumDiceNumber = 0;
@@ -22,6 +23,7 @@ public class Menu : MonoBehaviour
     {
         state = GameObject.Find("State").GetComponent<State>();
         diceRollButton.onClick.AddListener(RunDiceRoll);
+        GameOverCanvas.enabled = false;
 
         SceneManager.showMessage += ShowCardsAndDiceMessage;
     }
@@ -97,6 +99,19 @@ public class Menu : MonoBehaviour
         }
 
         sumTotalTurnedOverCardsText.text = "" + sceneManager.GetSumTotalNumTurnedOver();
+
+        // ゲーム終了判定
+        if (sceneManager.GetNumLeftPlayingCards() == 0 && currentState != State.StateID.GameOver)
+        {
+            StartCoroutine(DelayMethod(1.0f, () =>
+            {
+                state.ChangeState(State.StateID.GameOver);
+                GameOverCanvas.enabled = true;
+                GameObject resultTextObj = GameOverCanvas.transform.Find("TurnedOverCards/TextNumCards").gameObject;
+                Text resultText = resultTextObj.GetComponent<Text>();
+                resultText.text = "" + sceneManager.GetSumTotalNumTurnedOver();
+            }));
+        }
 
     }
 
