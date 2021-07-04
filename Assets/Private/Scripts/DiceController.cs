@@ -39,7 +39,7 @@ public class DiceController : MonoBehaviour
         isRollingEnd = false;
         Dice2.Clear();
         StartCoroutine("UpdateRoll", nCurrentDice);
-        StartCoroutine("WaitRollingDice", .05f * (nCurrentDice) + 3.5f);
+        StartCoroutine("WaitRollingDice", .05f * (nCurrentDice) + 3.0f);
     }
 
     private Vector3 Force()

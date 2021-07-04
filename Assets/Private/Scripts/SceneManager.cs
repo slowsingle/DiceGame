@@ -6,13 +6,17 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    [SerializeField] private TextController textController;
+    [SerializeField] private PlayingCardsController playingCardsController;
+
+    public delegate void ShowMessageHandler(string mark, int number, int sumTurnedOver);
+    public static event ShowMessageHandler showMessage;
 
     public string cardTag = "PlayingCard";
 
     // めくったカードを記録しておく
     private List<GameObject> turnedOverCardList = new List<GameObject>();
-    private int sum_number = 0;
+    private int sumTurnedOver = 0;
+    private int currentNumTurnedOver = 0, sumTotalNumTurnedOver = 0;
 
     private State state;  // ゲームの状態を取得できるようにする
 
@@ -34,7 +38,6 @@ public class SceneManager : MonoBehaviour
             if (Physics.Raycast(ray.origin, ray.direction, out hit, Mathf.Infinity))
             {
                 GameObject obj = hit.collider.gameObject;
-                //Debug.Log(obj.tag + ", " + obj.name);
                 if (obj.CompareTag(cardTag))
                 {
                     bool isFrontSide = obj.GetComponent<Card>().OnUserAction();
@@ -48,20 +51,33 @@ public class SceneManager : MonoBehaviour
                     Match numberMatch = Regex.Match(cardName, @"\d+");
                     int number = Int32.Parse(numberMatch.Value); 
 
-                    sum_number += number;
-                    textController.AddMessage("めくったカードのマークは " + mark + " で数字は " + number + " です（合計値は" + sum_number + "）");
+                    sumTurnedOver += number;
+                    if (showMessage != null) showMessage(mark, number, sumTurnedOver);
 
+                    currentNumTurnedOver += 1;
+                    sumTotalNumTurnedOver += 1;
                     turnedOverCardList.Add(obj);
-                    
-                    //Debug.Log("name is " + mark + " : " + number + ", isFrontSide is " + isFrontSide);
                 }
             }
         }   
     }
 
-    public int getSumTurnedOverCardNumber()
+    // 現在のフェーズでめくったカードの数値の合計を返す
+    public int GetSumTurnedOverCardNumber()
     {
-        return sum_number;
+        return sumTurnedOver;
+    }
+
+    // 現在のフェーズでカードをめくった回数（＝めくったカードの枚数）を返す
+    public int GetCurrentNumTurnedOver()
+    {
+        return currentNumTurnedOver;
+    }
+
+    // ゲームスタート時からカードをめくった回数（＝めくったカードののべ回数）を返す
+    public int GetSumTotalNumTurnedOver()
+    {
+        return sumTotalNumTurnedOver;
     }
 
 
@@ -75,7 +91,8 @@ public class SceneManager : MonoBehaviour
 
         // 再初期化
         turnedOverCardList = new List<GameObject>();
-        sum_number = 0;
+        sumTurnedOver = 0;
+        currentNumTurnedOver = 0;
     }
 
     // めくったカードを消す
@@ -83,11 +100,24 @@ public class SceneManager : MonoBehaviour
     {
         foreach (GameObject obj in turnedOverCardList)
         {
-            Destroy(obj);
+            playingCardsController.DestroyCard(obj);
         }
 
         // 再初期化
         turnedOverCardList = new List<GameObject>();
-        sum_number = 0;
+        sumTurnedOver = 0;
+        currentNumTurnedOver = 0;
+    }
+
+    // これ以上カードがめくれないかどうかを調べる
+    public bool IsCannotTurnOver()
+    {
+        if (currentNumTurnedOver == playingCardsController.GetNumLeftPlayingCards())
+        {
+            // 場に残されているカードをすべてめくっている状態なので、これ以上はカードをめくることができない
+            return true;
+        }
+
+        return false;
     }
 }

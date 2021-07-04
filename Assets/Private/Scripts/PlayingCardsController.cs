@@ -11,7 +11,10 @@ public class PlayingCardsController : MonoBehaviour
 
     private List<GameObject> playingCardInstanceList = new List<GameObject>();
 
-    private int row = 4, col = 7;  // 行と列
+    private int row = 2, col = 3;  // 行と列  4,7
+
+    private int numberPlayingCards = 0;
+    private int numberLeftPlayingCards = 0;
 
 
     private void Start()
@@ -36,13 +39,22 @@ public class PlayingCardsController : MonoBehaviour
                     Debug.LogError("cannot create instance");
                 }
                 playingCardInstanceList.Add(inst);
+                numberPlayingCards += 1;
             }
         }
+
+        numberLeftPlayingCards = numberPlayingCards;
     }
 
 
-    private void Update()
+    public void DestroyCard(GameObject obj)
     {
-        
+        Destroy(obj);
+        numberLeftPlayingCards -= 1;
+    }
+
+    public int GetNumLeftPlayingCards()
+    {
+        return numberLeftPlayingCards;
     }
 }

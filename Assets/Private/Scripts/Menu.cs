@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private TextController textController;
     [SerializeField] private ToggleSelector toggleSelector;
     [SerializeField] private SceneManager sceneManager;
+    [SerializeField] private Text sumTotalTurnedOverCardsText;
 
     private bool nowWaitingDiceRoll = false;
     private int currentSumDiceNumber = 0;
@@ -20,6 +21,8 @@ public class Menu : MonoBehaviour
     {
         state = GameObject.Find("State").GetComponent<State>();
         diceRollButton.onClick.AddListener(RunDiceRoll);
+
+        SceneManager.showMessage += ShowCardsAndDiceMessage;
     }
 
     private void Update()
@@ -52,13 +55,13 @@ public class Menu : MonoBehaviour
         else if (currentState == State.StateID.TurnOverCards)
         {
             // めくったトランプの合計値と比較する
-            int currentSumCardNumber = sceneManager.getSumTurnedOverCardNumber();
+            int currentSumCardNumber = sceneManager.GetSumTurnedOverCardNumber();
             if (currentSumCardNumber >= currentSumDiceNumber)
             {
                 if (currentSumCardNumber == currentSumDiceNumber)
                 {
                     textController.AddMessage("ぴったり！");
-                    StartCoroutine(DelayMethod(1.0f, () =>
+                    StartCoroutine(DelayMethod(1.5f, () =>
                     {
                         sceneManager.ClearPlayingCards();
                     }));
@@ -66,7 +69,7 @@ public class Menu : MonoBehaviour
                 else
                 {
                     textController.AddMessage("超えてしまいました！");
-                    StartCoroutine(DelayMethod(1.0f, () =>
+                    StartCoroutine(DelayMethod(1.5f, () =>
                     {
                         sceneManager.ResetPlayingCards();
                     }));
@@ -76,7 +79,22 @@ public class Menu : MonoBehaviour
                 state.ChangeState(State.StateID.DiceRoll);
                 diceRollButton.interactable = true;
             }
+            else if (sceneManager.IsCannotTurnOver())
+            {
+                // 今のところここに入るときはめくれるカードが1枚もないかつカードの合計値が出目より低い状態の場合のみ
+                textController.AddMessage("足りない！");
+                StartCoroutine(DelayMethod(1.5f, () =>
+                {
+                    sceneManager.ResetPlayingCards();
+                }));
+
+                // 最後に状態遷移をする
+                state.ChangeState(State.StateID.DiceRoll);
+                diceRollButton.interactable = true;
+            }
         }
+
+        sumTotalTurnedOverCardsText.text = "" + sceneManager.GetSumTotalNumTurnedOver();
 
     }
 
@@ -101,4 +119,10 @@ public class Menu : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         action?.Invoke();
     }
+
+    private void ShowCardsAndDiceMessage(string mark, int number, int sumTurnedOver)
+    {
+        textController.AddMessage("めくったカードのマークは " + mark + " で数字は " + number + " です（カードの合計は" + sumTurnedOver + "で、ダイスの合計は" + currentSumDiceNumber +"）");
+    }
+
 }
