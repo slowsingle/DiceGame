@@ -23,7 +23,7 @@ public class SceneManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && state.GetState() == State.StateID.TurnOverCards)
         {
             Ray ray = new Ray();
             RaycastHit hit = new RaycastHit();
@@ -54,7 +54,6 @@ public class SceneManager : MonoBehaviour
                     turnedOverCardList.Add(obj);
                     
                     //Debug.Log("name is " + mark + " : " + number + ", isFrontSide is " + isFrontSide);
-                    state.ChangeState(State.StateID.TurnOverCards);
                 }
             }
         }   
@@ -63,5 +62,32 @@ public class SceneManager : MonoBehaviour
     public int getSumTurnedOverCardNumber()
     {
         return sum_number;
+    }
+
+
+    // めくったカードを元に戻す
+    public void ResetPlayingCards()
+    {
+        foreach (GameObject obj in turnedOverCardList)
+        {
+            obj.GetComponent<Transform>().Rotate(new Vector3(0, 0, 1.0f), 180);
+        }
+
+        // 再初期化
+        turnedOverCardList = new List<GameObject>();
+        sum_number = 0;
+    }
+
+    // めくったカードを消す
+    public void ClearPlayingCards()
+    {
+        foreach (GameObject obj in turnedOverCardList)
+        {
+            Destroy(obj);
+        }
+
+        // 再初期化
+        turnedOverCardList = new List<GameObject>();
+        sum_number = 0;
     }
 }
