@@ -12,6 +12,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private ToggleSelector toggleSelector;
     [SerializeField] private SceneManager sceneManager;
     [SerializeField] private Text sumTotalTurnedOverCardsText;
+    [SerializeField] private AudioSource diceRollSound, OKSound;
 
     private bool nowWaitingDiceRoll = false;
     private int currentSumDiceNumber = 0;
@@ -61,6 +62,7 @@ public class Menu : MonoBehaviour
                 if (currentSumCardNumber == currentSumDiceNumber)
                 {
                     textController.AddMessage("ぴったり！");
+                    if (OKSound != null) OKSound.Play();
                     StartCoroutine(DelayMethod(1.5f, () =>
                     {
                         sceneManager.ClearPlayingCards();
@@ -108,6 +110,8 @@ public class Menu : MonoBehaviour
             textController.AddMessage("振るサイコロの数を決めてください");
             return;
         }
+
+        if (diceRollSound != null) diceRollSound.Play();
 
         diceRollButton.interactable = false;
         diceController.DiceRoll(nDice);

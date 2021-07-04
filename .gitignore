@@ -17,6 +17,9 @@
 
 /Assets/Playing Cards.meta
 
+/Assets/Private/Audio.meta
+/Assets/Private/Audio/
+
 # Visual Studio 2015 cache directory
 /.vs/
 

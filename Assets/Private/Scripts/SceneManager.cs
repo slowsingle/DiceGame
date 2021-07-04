@@ -7,6 +7,7 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
     [SerializeField] private PlayingCardsController playingCardsController;
+    [SerializeField] private AudioSource turnOverCardSound;
 
     public delegate void ShowMessageHandler(string mark, int number, int sumTurnedOver);
     public static event ShowMessageHandler showMessage;
@@ -41,6 +42,8 @@ public class SceneManager : MonoBehaviour
                 if (obj.CompareTag(cardTag))
                 {
                     bool isFrontSide = obj.GetComponent<Card>().OnUserAction();
+
+                    if (turnOverCardSound != null) turnOverCardSound.Play();
 
                     string objName = obj.name;
                     string cardName = objName.Split('_')[2];
