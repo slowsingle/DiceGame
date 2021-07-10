@@ -11,7 +11,7 @@ public class PlayingCardsController : MonoBehaviour
 
     private List<GameObject> playingCardInstanceList = new List<GameObject>();
 
-    private int row = 2, col = 3;  // 行と列  4,7
+    private int row, col;  // 行と列  4,7
 
     private int numberPlayingCards = 0;
     private int numberLeftPlayingCards = 0;
@@ -21,6 +21,11 @@ public class PlayingCardsController : MonoBehaviour
     {
         playingCardsTable.Initialize();
         playingCardsTable.Shuffle();
+
+        string mode = StartButton.GetSelectedMode();
+        if (mode == "Normal") { row = 2; col = 3;}
+        else if (mode == "Hard") { row = 4; col = 7;}
+        else Debug.LogError("Invalid mode : " + mode);
 
         List<GameObject> cardDeck = playingCardsTable.getCardDeck();
 
