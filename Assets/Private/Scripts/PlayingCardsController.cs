@@ -29,6 +29,7 @@ public class PlayingCardsController : MonoBehaviour
 
         List<GameObject> cardDeck = playingCardsTable.getCardDeck();
 
+        // HACK: カードを中央ぞろえに配置するために、rowとcolにそれぞれ1を足している
         for (int r = 0; r < row + 1; r++)
         {
             float _offset_z = ((float) r - (float) row / 2.0f) * 1.2f;
@@ -36,7 +37,7 @@ public class PlayingCardsController : MonoBehaviour
             {
                 float _offset_x = ((float) c - (float) col / 2.0f) * 1.0f;
                 Vector3 _point = basePoint.position + new Vector3(_offset_x, 0f, _offset_z);
-                GameObject inst = (GameObject) GameObject.Instantiate(cardDeck[r * col + c], _point, Quaternion.identity);
+                GameObject inst = (GameObject) GameObject.Instantiate(cardDeck[r * (col + 1) + c], _point, Quaternion.identity);
                 inst.GetComponent<Transform>().localScale = new Vector3(0.12f, 0.12f, 0.12f);
                 inst.GetComponent<Transform>().Rotate(new Vector3(0, 0, 1), 180);
                 if (inst == null)
